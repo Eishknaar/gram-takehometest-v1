@@ -44,7 +44,7 @@ public class MixingGridHandler : GridHandler
 			// create the new item from the recipe
 			var instance = Instantiate(_itemPrefab);
 			instance.Configure(result, _emptyCells[0]);
-			// _fallbackMixItem.AddMergeableItemToEmpty(instance);
+			_fallbackMixItem.AddMergeableItemToEmpty(instance);
 		}
 		else
 		{
