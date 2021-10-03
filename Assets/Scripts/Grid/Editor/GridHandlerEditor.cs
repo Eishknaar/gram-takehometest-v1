@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(GridHandler))]
+[CustomEditor(typeof(GridHandler), true)]
 public class GridHandlerEditor : Editor
 {
    
