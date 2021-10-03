@@ -36,7 +36,7 @@ public class GridCell : MonoBehaviour
             _handler.SetCellState(_item.GetCurrentCell(), true);
         
         _item = item;
-        _handler.SetCellState(this, _item != null);
+        _handler.SetCellState(this, _item == null);
     }
 
     public void SetNeighbor(GridCell neighbor, MoveDirection direction)
