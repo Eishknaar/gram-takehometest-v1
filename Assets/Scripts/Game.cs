@@ -43,13 +43,7 @@ public class Game : MonoBehaviour
 
 		// choose new recipes
 		ActiveRecipes.Clear();
-		difficulty = Mathf.Max(difficulty, 1);
-		for (int i = 0; i < difficulty; i++)
-		{
-			// a 'recipe' has more than 1 ingredient, else it is just a raw ingredient.
-			var recipe = ItemUtils.RecipeMap.FirstOrDefault(kvp => kvp.Value.Count > 1).Key;
-			ActiveRecipes.Add(recipe);
-		}
+		ActiveRecipes = MainGrid.recipeRange.Where(recipe => recipe.NodeLinks.Count > 1).Select(recipe => recipe.MainNodeData.NodeGUID).ToList();
 
 		// populate the board
 		var emptyCells = MainGrid.GetEmptyCells.ToArray();
@@ -57,7 +51,8 @@ public class Game : MonoBehaviour
 		{
 			if (cell.DecideToSpawn())
 			{
-				var chosenRecipe = ActiveRecipes[0];
+				var recipeIndex = Random.Range(0, ActiveRecipes.Count());
+				var chosenRecipe = ActiveRecipes[recipeIndex];
 				var ingredients = ItemUtils.RecipeMap[chosenRecipe].ToArray();
 				var ingredient = ingredients[Random.Range(0, ingredients.Count())];
 				var item = ItemUtils.ItemsMap[ingredient.NodeGUID];

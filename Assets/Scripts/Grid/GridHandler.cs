@@ -20,7 +20,7 @@ public class GridHandler : MonoBehaviour
 	[Range(0.0f, 1.0f)]
 	public float itemDenisty;
 
-	public List<NodeData> recipeRange;
+	public List<NodeContainer> recipeRange;
 	#endregion
 
 	#region initialization

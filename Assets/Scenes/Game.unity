@@ -1529,7 +1529,10 @@ MonoBehaviour:
   - {fileID: 2050903153}
   _fullCells: []
   itemDenisty: 0.75
-  recipeRange: []
+  recipeRange:
+  - {fileID: 11400000, guid: 814d39dfb7f9db947957d0b41334fcdf, type: 2}
+  - {fileID: 11400000, guid: 43da0c8b9896a2041a2034d563d0ed9d, type: 2}
+  - {fileID: 11400000, guid: cc4ba4b6862e9974993715459cc0da40, type: 2}
 --- !u!4 &744121704
 Transform:
   m_ObjectHideFlags: 0
