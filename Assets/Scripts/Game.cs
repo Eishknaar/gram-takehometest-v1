@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Game : MonoBehaviour
 {
+	public static Game Instance { get; private set; }
 	public MergableItem DraggableObjectPrefab;
 	public GridHandler MainGrid;
 
@@ -11,6 +12,16 @@ public class Game : MonoBehaviour
 
 	private void Awake()
 	{
+		if(Instance == null)
+        {
+			Instance = this;
+			DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+			Destroy(gameObject);
+        }
+
 		Screen.fullScreen =
 			false; // https://issuetracker.unity3d.com/issues/game-is-not-built-in-windowed-mode-when-changing-the-build-settings-from-exclusive-fullscreen
 

@@ -17,7 +17,7 @@ public class GridCell : MonoBehaviour
     {
 	    _handler.ClearCell(this);
 
-		var game = FindObjectOfType<Game>();
+        var game = Game.Instance;
 		var obj = Instantiate(game.DraggableObjectPrefab);
 	    obj.Configure(item, this);
     }
