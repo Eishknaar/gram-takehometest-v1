@@ -13,6 +13,13 @@ public class GridCell : MonoBehaviour
     private MergableItem _item;
     public MergableItem Item => _item;
 
+    public bool DecideToSpawn()
+    {
+        var randomFloat = Random.Range(0.001f, 1.0f);
+        bool shouldSpawn = randomFloat <= _handler.itemDenisty;
+        return shouldSpawn;
+    }
+
     public void SpawnItem(NodeContainer item)
     {
 	    _handler.ClearCell(this);

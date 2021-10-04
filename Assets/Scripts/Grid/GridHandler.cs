@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using GramGames.CraftingSystem.DataContainers;
 
 public class GridHandler : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class GridHandler : MonoBehaviour
 	public List<GridCell> GetFullCells => _fullCells;
 	public List<GridCell> GetEmptyCells => _emptyCells;
 
+	[Range(0.0f, 1.0f)]
+	public float itemDenisty;
+
+	public List<NodeData> recipeRange;
 	#endregion
 
 	#region initialization

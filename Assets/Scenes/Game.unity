@@ -1528,6 +1528,8 @@ MonoBehaviour:
   - {fileID: 210715031}
   - {fileID: 2050903153}
   _fullCells: []
+  itemDenisty: 0.75
+  recipeRange: []
 --- !u!4 &744121704
 Transform:
   m_ObjectHideFlags: 0
@@ -3539,6 +3541,8 @@ MonoBehaviour:
   - {fileID: 631781652}
   - {fileID: 734816973}
   _fullCells: []
+  itemDenisty: 0
+  recipeRange: []
   _itemPrefab: {fileID: 6012301240760876610, guid: e0ca2dcbb421a40f6b607a7b1b392196,
     type: 3}
   _fallbackMixItem: {fileID: 744121703}

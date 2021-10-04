@@ -55,11 +55,14 @@ public class Game : MonoBehaviour
 		var emptyCells = MainGrid.GetEmptyCells.ToArray();
 		foreach (var cell in emptyCells)
 		{
-			var chosenRecipe = ActiveRecipes[0];
-			var ingredients = ItemUtils.RecipeMap[chosenRecipe].ToArray();
-			var ingredient = ingredients[Random.Range(0, ingredients.Count())];
-			var item = ItemUtils.ItemsMap[ingredient.NodeGUID];
-			cell.SpawnItem(item);
+			if (cell.DecideToSpawn())
+			{
+				var chosenRecipe = ActiveRecipes[0];
+				var ingredients = ItemUtils.RecipeMap[chosenRecipe].ToArray();
+				var ingredient = ingredients[Random.Range(0, ingredients.Count())];
+				var item = ItemUtils.ItemsMap[ingredient.NodeGUID];
+				cell.SpawnItem(item);
+			}
 		}
 	}
 }
