@@ -9,6 +9,7 @@ public class Game : MonoBehaviour
 	public MergableItem DraggableObjectPrefab;
 	public GridHandler MainGrid;
 	public MixingGridHandler MixingGrid;
+	public GameObject SettingsMenu;
 
 	private List<string> ActiveRecipes = new List<string>();
 
@@ -48,9 +49,9 @@ public class Game : MonoBehaviour
 		ReloadLevel(1);
 	}
 
-
 	public void EndGame()
 	{
+		PlayerPrefs.Save();
 		SceneManager.LoadScene(0, LoadSceneMode.Single);
 	}
 
