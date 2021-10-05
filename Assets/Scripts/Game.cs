@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
@@ -8,7 +9,6 @@ public class Game : MonoBehaviour
 	public MergableItem DraggableObjectPrefab;
 	public GridHandler MainGrid;
 	public MixingGridHandler MixingGrid;
-	public GameObject MainMenu;
 
 	private List<string> ActiveRecipes = new List<string>();
 
@@ -17,7 +17,6 @@ public class Game : MonoBehaviour
 		if(Instance == null)
         {
 			Instance = this;
-			DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -27,20 +26,32 @@ public class Game : MonoBehaviour
 		Screen.fullScreen =
 			false; // https://issuetracker.unity3d.com/issues/game-is-not-built-in-windowed-mode-when-changing-the-build-settings-from-exclusive-fullscreen
 
-		// load all item definitions
-		ItemUtils.InitializeMap();
+		if (ItemUtils.ItemsMap.Count == 0)
+		{
+			// load all item definitions
+			ItemUtils.InitializeMap();
+		}
 	}
 
-	public void StartGame()
+	void OnEnable()
 	{
-		MainMenu.SetActive(false);
+		SceneManager.sceneLoaded += OnLevelFinishedLoading;
+	}
+
+	void OnDisable()
+	{
+		SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+	}
+
+	void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+	{
 		ReloadLevel(1);
 	}
+
+
 	public void EndGame()
 	{
-		MainMenu.SetActive(true);
-		MainGrid.ClearFullCells();
-		MixingGrid.ClearFullCells();
+		SceneManager.LoadScene(0, LoadSceneMode.Single);
 	}
 
 	public void ReloadLevel(int difficulty = 1)
