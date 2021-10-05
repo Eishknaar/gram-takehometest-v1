@@ -7,6 +7,8 @@ public class Game : MonoBehaviour
 	public static Game Instance { get; private set; }
 	public MergableItem DraggableObjectPrefab;
 	public GridHandler MainGrid;
+	public MixingGridHandler MixingGrid;
+	public GameObject MainMenu;
 
 	private List<string> ActiveRecipes = new List<string>();
 
@@ -29,17 +31,22 @@ public class Game : MonoBehaviour
 		ItemUtils.InitializeMap();
 	}
 
-	private void Start()
+	public void StartGame()
 	{
+		MainMenu.SetActive(false);
 		ReloadLevel(1);
+	}
+	public void EndGame()
+	{
+		MainMenu.SetActive(true);
+		MainGrid.ClearFullCells();
+		MixingGrid.ClearFullCells();
 	}
 
 	public void ReloadLevel(int difficulty = 1)
 	{
 		// clear the board
-		var fullCells = MainGrid.GetFullCells.ToArray();
-		for (int i = fullCells.Length - 1; i >= 0; i--)
-			MainGrid.ClearCell(fullCells[i]);
+		MainGrid.ClearFullCells();
 
 		// choose new recipes
 		ActiveRecipes.Clear();

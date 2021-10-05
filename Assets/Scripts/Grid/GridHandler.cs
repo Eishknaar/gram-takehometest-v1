@@ -96,6 +96,12 @@ public class GridHandler : MonoBehaviour
 	}
 
 
+	public void ClearFullCells()
+    {
+		for (int i = _fullCells.Count - 1; i >= 0; i--)
+			ClearCell(_fullCells[i]);
+	}
+
 	public void SetCellState(GridCell cell, bool empty)
 	{
 		if (cell == null) return;
