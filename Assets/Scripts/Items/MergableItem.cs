@@ -47,6 +47,7 @@ public class MergableItem : DraggableObject
 
     protected override void DoBeginDrag()
     {
+        _parentCell.RemoveItem();
     }
 
     public LayerMask mask;
@@ -67,14 +68,11 @@ public class MergableItem : DraggableObject
             }
             // TODO: else what do we do?
         }
-        else
-        {
             //return to previous slot
-            if (_parentCell != null)
-            {
-	            Debug.Log("off grid");
-                AssignToCell(_parentCell);
-            }
+        if (_parentCell != null)
+        {
+	        Debug.Log("off grid");
+            AssignToCell(_parentCell);
         }
     }
 

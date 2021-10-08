@@ -72,6 +72,10 @@ public class GridCell : MonoBehaviour
         return _item != null;
     }
 
+    public void RemoveItem()
+    {
+        _item = null;
+    }
     public void ClearItem()
     {
         if (_item != null)
