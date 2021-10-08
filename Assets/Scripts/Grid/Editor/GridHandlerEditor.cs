@@ -13,7 +13,7 @@ public class GridHandlerEditor : Editor
         GridHandler myTarget = (GridHandler)target;
         if (GUILayout.Button("cache everything"))
         {
-            myTarget.HackishInitialization();
+            myTarget.Initialize();
         }
     }
 
