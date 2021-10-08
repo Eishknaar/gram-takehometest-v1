@@ -30,7 +30,20 @@ public class GridHandler : MonoBehaviour
     #endregion
 
     #region initialization
-    public void Initialize()
+
+	private void Awake()
+	{
+		this.numberOfRows = PlayerPrefs.GetInt("gridSize");
+		this.numberOfColumns = PlayerPrefs.GetInt("gridSize");
+		this.Initialize();
+
+		foreach (var cell in _emptyCells)
+		{
+			cell.SetHandler(this);
+		}
+	}
+
+	public void Initialize()
 	{
 		_rows = new List<Transform>(numberOfRows);
 		ClearExistingCells();
@@ -77,9 +90,6 @@ public class GridHandler : MonoBehaviour
 		}
 	}
 
-	private void CreateGridRow(Vector3 gridPos, int rowIndex, Vector3 cellSize)
-	{
-	}
     private void ConnectCells()
     {
         for (int i = 0; i < _rows.Count; i++)
@@ -113,14 +123,6 @@ public class GridHandler : MonoBehaviour
 	{
 		_emptyCells = new List<GridCell>();
 		_fullCells = new List<GridCell>();
-	}
-
-	private void Awake()
-	{
-		foreach (var cell in _emptyCells)
-		{
-			cell.SetHandler(this);
-		}
 	}
 
 	#endregion

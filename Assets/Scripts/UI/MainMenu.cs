@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void StartGame()
+    public void StartGame(int gridSize)
     {
+        PlayerPrefs.SetInt("gridSize", gridSize);
         SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 }
